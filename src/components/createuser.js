@@ -44,6 +44,7 @@ class CreateUser extends Component {
       .post("http://localhost:8080/users", userObject)
       .then((response) => {
         console.log(response.data);
+        this.props.history.push("/");
       })
       .catch((error) => {
         console.log(error);
@@ -83,7 +84,7 @@ class CreateUser extends Component {
           <div>
             <label htmlFor="age">Age</label>
             <input
-              type="text"
+              type="number"
               placeholder="age"
               value={this.state.age}
               onChange={this.handleAge}

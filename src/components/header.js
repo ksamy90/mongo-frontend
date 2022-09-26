@@ -4,13 +4,13 @@ import { NavLink } from "react-router-dom";
 const Header = () => {
   return (
     <div>
-      <NavLink to="/" activeClassName="is-active" exact={true}>
+      <NavLink to="/" activeclassName="is-active" exact={true}>
         Task
       </NavLink>
-      <NavLink to="/createuser" activeClassName="is-active">
+      <NavLink to="/createuser" activeclassName="is-active">
         Create User
       </NavLink>
-      <NavLink to="/users" activeClassName="is-active">
+      <NavLink to="/users" activeclassName="is-active">
         Users
       </NavLink>
     </div>

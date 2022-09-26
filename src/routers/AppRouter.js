@@ -1,19 +1,20 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import CreateUser from "../components/createuser";
-import Task from "../components/task";
-import Users from "../components/users";
+import Users from "../components/task";
 import Header from "../components/header";
 
 const AppRouter = () => {
   return (
     <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route exact path="/" element={<Task />} />
-        <Route path="/createuser" element={<CreateUser />} />
-        <Route path="/users" element={<Users />} />
-      </Routes>
+      <div>
+        <Header />
+        <Switch>
+          <Route exact path="/" component={Users} />
+          <Route path="/createuser" component={CreateUser} />
+          <Route path="/users" component={Users} />
+        </Switch>
+      </div>
     </BrowserRouter>
   );
 };
