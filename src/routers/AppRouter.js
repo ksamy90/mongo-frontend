@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import CreateUser from "../components/createuser";
-import Users from "../components/task";
+import Users from "../components/users";
 import Header from "../components/header";
 
 const AppRouter = () => {
