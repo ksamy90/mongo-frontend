@@ -21,9 +21,26 @@ class Users extends Component {
   render() {
     return (
       <div>
-        <h1>Users</h1>
-        <h2>tasks</h2>
-        <h2>sports</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Age</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.state.usersCollection.map((user, index) => {
+              return (
+                <tr key={index}>
+                  <td>{user.name}</td>
+                  <td>{user.email}</td>
+                  <td>{user.age}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
       </div>
     );
   }
