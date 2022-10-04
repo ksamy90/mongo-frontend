@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import "./createuser.css";
 
 class CreateUser extends Component {
   constructor(props) {
@@ -9,6 +10,7 @@ class CreateUser extends Component {
       email: "",
       password: "",
       age: "",
+      error: false,
     };
   }
   handleName = (event) => {
@@ -44,17 +46,26 @@ class CreateUser extends Component {
       .post("http://localhost:8080/users", userObject)
       .then((response) => {
         console.log(response.data);
+        this.setState({
+          error: false,
+        });
         this.props.history.push("/");
       })
       .catch((error) => {
         console.log(error);
+        this.setState({
+          error: error,
+        });
       });
   };
   render() {
     return (
       <div className="wrapper">
-        <form onSubmit={this.handleSubmit}>
+        <form className="form" onSubmit={this.handleSubmit}>
           <div>
+            {!this.state.name && this.state.error && (
+              <p>{this.state.error.response.data.errors.name.message}</p>
+            )}
             <label htmlFor="name">Name</label>
             <input
               type="text"
@@ -64,6 +75,9 @@ class CreateUser extends Component {
             />
           </div>
           <div>
+            {!this.state.email && this.state.error && (
+              <p>{this.state.error.response.data.errors.email.message}</p>
+            )}
             <label htmlFor="email">Email</label>
             <input
               type="text"
@@ -73,6 +87,9 @@ class CreateUser extends Component {
             />
           </div>
           <div>
+            {!this.state.password && this.state.error && (
+              <p>{this.state.error.response.data.errors.password.message}</p>
+            )}
             <label htmlFor="password">Password</label>
             <input
               type="password"
